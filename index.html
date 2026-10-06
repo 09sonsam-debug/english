@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>매일 영어 대화</title>
+<meta name="theme-color" content="#234B3E">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎤</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --chalk:#234B3E; --chalk-2:#2F6150; --paper:#F3F6F1; --ink:#1E2A26; --mute:#5E6E67;
+  --yolk:#F2C94C; --coral:#D9583B; --leaf:#3A8F63; --line:#D5DED6; --white:#FFFFFF;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html,body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:17px;line-height:1.6}
+main{max-width:520px;margin:0 auto;padding:18px 18px 120px}
+.en{font-family:"Literata",Georgia,serif}
+h1{font-size:26px;margin:4px 0 2px;line-height:1.3}
+h2{font-size:21px;margin:0 0 8px;line-height:1.35}
+p{margin:.35em 0}
+.mute{color:var(--mute);font-size:15px}
+button{font:inherit;cursor:pointer;border:0}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--yolk);outline-offset:2px}
+.screen{display:none}.screen.on{display:block}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.link{background:none;color:var(--chalk);font-weight:600;padding:6px 0}
+.board{background:var(--chalk);color:#F4F7F2;border-radius:20px;padding:20px 20px 18px}
+.board .mute{color:#BFD3C7}
+.streak{font-size:44px;font-weight:700;line-height:1}
+.week{display:flex;gap:6px;align-items:flex-end;height:46px;margin-top:14px}
+.week div{flex:1;background:#3F6F5E;border-radius:4px 4px 2px 2px;min-height:4px}
+.week div.has{background:var(--yolk)}
+.menu{display:grid;gap:10px;margin-top:16px}
+.menu button{display:flex;justify-content:space-between;align-items:center;text-align:left;background:var(--white);
+  border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-weight:600;color:var(--ink)}
+.menu button small{display:block;font-weight:400;color:var(--mute);font-size:14px}
+.badge{background:var(--coral);color:#fff;border-radius:999px;padding:2px 10px;font-size:14px}
+.who{display:grid;gap:12px;margin-top:22px}
+.who button{background:var(--chalk);color:#fff;border-radius:18px;padding:22px;text-align:left;font-size:22px;font-weight:700}
+.who button span{display:block;font-size:15px;font-weight:400;color:#BFD3C7}
+.card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:18px;margin-top:14px}
+.pattern{font-size:26px;font-weight:700;color:var(--chalk);line-height:1.35}
+.ex{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line)}
+.ex:first-of-type{border-top:0}
+.say{flex:none;width:38px;height:38px;border-radius:50%;background:var(--paper);color:var(--chalk);font-size:17px}
+.prompt-ko{font-size:22px;font-weight:700;line-height:1.45}
+.step{font-size:14px;color:var(--mute);font-weight:600}
+.micwrap{display:flex;flex-direction:column;align-items:center;margin:22px 0 10px}
+.mic{width:96px;height:96px;border-radius:50%;background:var(--yolk);color:var(--ink);font-size:38px;
+  box-shadow:0 6px 0 #C9A12E}
+.mic:active{transform:translateY(3px);box-shadow:0 3px 0 #C9A12E}
+.mic.rec{background:var(--coral);color:#fff;box-shadow:0 0 0 10px rgba(217,88,59,.2)}
+@media (prefers-reduced-motion:no-preference){.mic.rec{animation:pulse 1.2s infinite}
+  @keyframes pulse{50%{box-shadow:0 0 0 18px rgba(217,88,59,.08)}}}
+.typed{display:flex;gap:8px;margin-top:10px}
+.typed input{flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit;background:#fff}
+.btn{background:var(--chalk);color:#fff;border-radius:12px;padding:12px 18px;font-weight:600}
+.btn.soft{background:var(--white);color:var(--chalk);border:1px solid var(--line)}
+.btn.wide{width:100%;margin-top:12px;padding:15px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.fb{border-radius:14px;padding:14px 16px;margin-top:12px}
+.fb.ok{background:#E3F2E9;border:1px solid #B9DEC8}
+.fb.no{background:#FBE9E4;border:1px solid #F1C3B6}
+.fb .head{font-weight:700;margin-bottom:4px}
+.said{color:var(--mute);font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chips button{background:var(--white);border:1px solid var(--line);border-radius:999px;padding:9px 14px;color:var(--ink)}
+.chat{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.bub{max-width:86%;border-radius:16px;padding:11px 14px}
+.bub.ai{background:var(--white);border:1px solid var(--line);align-self:flex-start}
+.bub.me{background:var(--chalk);color:#fff;align-self:flex-end}
+.bub .ko{display:none;color:var(--mute);font-size:14px;margin-top:4px}
+.showko .bub .ko,.showko .ko{display:block!important}
+.fix{align-self:flex-end;max-width:86%;font-size:14px;background:#FBE9E4;border-radius:12px;padding:8px 12px}
+.dock{position:fixed;left:0;right:0;bottom:0;background:var(--paper);border-top:1px solid var(--line);
+  padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px))}
+.dock .in{max-width:520px;margin:0 auto}
+.dock .mic{width:64px;height:64px;font-size:26px;box-shadow:0 4px 0 #C9A12E}
+.dock .bar{display:flex;gap:8px;align-items:center}
+.dock .bar input{flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:11px;font:inherit}
+.hints{display:none;margin-bottom:8px}
+.hints.on{display:block}
+.hints button{display:block;width:100%;text-align:left;background:var(--white);border:1px dashed var(--chalk-2);
+  border-radius:10px;padding:8px 12px;margin-top:6px;color:var(--ink)}
+textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit;min-height:96px;background:#fff}
+select,.field input{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit;background:#fff}
+label{display:block;font-weight:600;margin:14px 0 6px}
+.answer{white-space:pre-wrap}
+.empty{text-align:center;color:var(--mute);padding:30px 10px}
+.loading{position:fixed;inset:0;background:rgba(243,246,241,.75);display:none;align-items:center;justify-content:center;z-index:9}
+.loading.on{display:flex}
+.loading div{background:var(--chalk);color:#fff;border-radius:14px;padding:14px 20px;font-weight:600}
+.toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%);background:var(--ink);color:#fff;
+  border-radius:12px;padding:12px 16px;font-size:15px;max-width:90%;display:none;z-index:10}
+.toast.on{display:block}
+.partner{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.partner span{background:#2F6150;border-radius:999px;padding:4px 12px;font-size:14px;color:#E6EFE9}
+.words{font-size:21px;line-height:1.8}
+.words .hit{color:var(--leaf);font-weight:700}
+.words .miss{color:var(--coral);text-decoration:underline wavy}
+.meter{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:8px 0}
+.meter i{display:block;height:100%;background:var(--leaf)}
+.toggle{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--chalk);font-weight:600;margin-bottom:8px}
+.line{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line)}
+.line:first-child{border-top:0}
+.who-tag{flex:none;min-width:44px;text-align:center;border-radius:8px;padding:2px 6px;font-size:13px;font-weight:700}
+.who-A{background:#DCEBE3;color:var(--chalk)} .who-B{background:#FCEFC7;color:#7A5A00} .who-C{background:#F9DCE4;color:#8A2D4B} .who-D{background:#E2E6F7;color:#2F3E8A}
+.kid .mic{width:120px;height:120px;font-size:46px}
+.kid .prompt-ko{font-size:26px}
+.kid .words{font-size:26px}
+.picks{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.picks label{display:flex;gap:6px;align-items:center;background:var(--white);border:1px solid var(--line);border-radius:999px;padding:6px 12px;margin:0;font-weight:600}
+.line.playing{background:#FFF8E0;border-radius:10px}
+.mine .who-tag{outline:2px solid var(--chalk)}
+.wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.wcard{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:10px 6px;text-align:center;color:var(--ink)}
+.wcard .pic{font-size:40px;line-height:1.2;height:64px;display:flex;align-items:center;justify-content:center}
+.wcard img,.bigpic img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+.wcard .w{font-family:"Literata",Georgia,serif;font-weight:700;margin-top:4px;word-break:break-word}
+.wcard.done{opacity:.55}
+.bigpic{font-size:110px;line-height:1;height:180px;display:flex;align-items:center;justify-content:center;margin:6px auto 10px;max-width:260px}
+.bigword{font-family:"Literata",Georgia,serif;font-size:34px;font-weight:700;text-align:center;color:var(--chalk)}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.choices button{background:var(--white);border:2px solid var(--line);border-radius:18px;height:130px;font-size:64px;padding:8px;overflow:hidden}
+.choices button.right{border-color:var(--leaf);background:#E3F2E9}
+.choices button.wrong{border-color:var(--coral);background:#FBE9E4}
+.photo-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--yolk);color:var(--ink);border-radius:14px;padding:16px;font-weight:700;margin-top:12px;cursor:pointer}
+.qbar{display:flex;gap:8px;margin-top:12px}.qbar .btn{flex:1}
+.wk{background:var(--white);border:2px solid var(--yolk);border-radius:16px;padding:16px;margin-top:14px}
+.wk .today{font-size:19px;font-weight:700;margin:4px 0 10px}
+.dots{display:flex;gap:6px;margin:8px 0}
+.dots i{flex:1;height:8px;border-radius:4px;background:var(--line)}
+.dots i.on{background:var(--leaf)} .dots i.now{outline:2px solid var(--chalk);outline-offset:1px}
+.day{display:flex;gap:10px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+.day:first-child{border-top:0}
+.day .d{flex:none;width:34px;height:34px;border-radius:50%;background:var(--paper);display:flex;align-items:center;justify-content:center;font-weight:700}
+.day.now .d{background:var(--yolk)} .day.done .d{background:var(--leaf);color:#fff}
+.day .t{flex:1}
+</style>
+</head>
+<body>
+<main>
+
+<!-- 처음 한 번: 연결 설정 -->
+<section class="screen" id="connect">
+  <h1>처음 한 번만 연결해 주세요</h1>
+  <p class="mute">이 휴대폰에 저장돼서 다음부터는 묻지 않아요.</p>
+  <label for="cUrl">GAS 웹앱 주소</label>
+  <div class="field"><input id="cUrl" placeholder="https://script.google.com/macros/s/.../exec" autocomplete="off"></div>
+  <label for="cPin">가족 비밀번호</label>
+  <div class="field"><input id="cPin" type="password" inputmode="numeric" autocomplete="off"></div>
+  <button class="btn wide" onclick="saveConnect()">연결하기</button>
+</section>
+
+<!-- 사용자 선택 -->
+<section class="screen" id="pick">
+  <h1>오늘은 누가 영어로 말해 볼까요?</h1>
+  <p class="mute">하루 10분, 영어로 입을 여는 시간</p>
+  <div class="who" id="whoList"></div>
+</section>
+
+<!-- 홈 -->
+<section class="screen" id="home">
+  <div class="top"><h1 id="hello"></h1><button class="link" onclick="go('pick')">사용자 바꾸기</button></div>
+  <div class="board">
+    <div class="mute">연속 학습</div>
+    <div><span class="streak" id="streak">0</span> 일째</div>
+    <p class="mute" id="todayLine"></p>
+    <div class="week" id="week" aria-label="최근 7일 말한 문장 수"></div>
+    <div class="partner" id="partner"></div>
+  </div>
+  <div class="wk" id="weekCard"><div class="mute">이번 주 학습지도를 불러오는 중…</div></div>
+  <div class="menu">
+    <button onclick="openLesson()"><span>오늘의 레슨<small>배우고, 따라 말하고, 내 이야기로 써먹기</small></span>›</button>
+    <button onclick="renderScenes();go('talkSetup')"><span>프리톡<small>상황을 골라 AI와 영어로 대화하기</small></span>›</button>
+    <button onclick="openWords()"><span>그림 단어장<small>그림·사진으로 단어를 외우고 퀴즈로 확인하기</small></span>›</button>
+    <button onclick="openDiary()"><span>1분 영어 일기<small>오늘 있었던 일을 영어로 말하면 일기로 다듬어 줘요</small></span>›</button>
+    <button onclick="openCouple()"><span>가족 상황극<small>헌둥, 헤둥, 다은이가 역할을 나눠 대본으로 대화하기</small></span>›</button>
+    <button onclick="go('tutor')"><span>AI 튜터에게 묻기<small>궁금한 표현을 한국어로 물어보기</small></span>›</button>
+    <button onclick="openReview()"><span>오늘의 복습<small>고친 문장이 1·3·7·14일 간격으로 다시 나와요</small></span><span class="badge" id="mistakeBadge">0</span></button>
+    <button onclick="openSettings()"><span>내 설정<small>레벨, 관심사, 말하기 속도</small></span>›</button>
+  </div>
+</section>
+
+<!-- 레슨 -->
+<section class="screen" id="lesson">
+  <div class="top"><button class="link" onclick="go('home')">‹ 홈</button><span class="step" id="lessonStep"></span></div>
+  <div id="lessonBody"></div>
+</section>
+
+<!-- 프리톡 설정 -->
+<section class="screen" id="talkSetup">
+  <div class="top"><button class="link" onclick="go('home')">‹ 홈</button></div>
+  <h2>어떤 상황에서 말해 볼까요?</h2>
+  <div class="chips" id="scenarios"></div>
+  <label for="customScene">직접 정하기</label>
+  <div class="typed"><input id="customScene" placeholder="예: 미국 학교 체육 교사와 수업 이야기"><button class="btn" onclick="startTalk(document.getElementById('customScene').value)">시작</button></div>
+</section>
+
+<!-- 프리톡 -->
+<section class="screen" id="talk">
+  <div class="top"><button class="link" onclick="endTalk()">‹ 대화 끝내기</button><span class="step" id="talkTitle"></span></div>
+  <div class="chat" id="chat"></div>
+</section>
+
+<!-- 튜터 -->
+<section class="screen" id="tutor">
+  <div class="top"><button class="link" onclick="go('home')">‹ 홈</button></div>
+  <h2>무엇이 궁금하세요?</h2>
+  <textarea id="tutorQ" placeholder="예: '시간 가는 줄 몰랐어'를 영어로 어떻게 말해요?"></textarea>
+  <button class="btn wide" onclick="ask()">물어보기</button>
+  <div class="card answer" id="tutorA" hidden></div>
+</section>
+
+<!-- 복습 -->
+<section class="screen" id="review">
+  <div class="top"><button class="link" onclick="go('home')">‹ 홈</button></div>
+  <h2>오늘의 복습</h2>
+  <p class="mute">고친 문장을 듣고 그대로 말해 보세요. 맞히면 간격이 1일 → 3일 → 7일 → 14일로 늘어나고, 4번 맞히면 졸업해요.</p>
+  <div id="reviewList"></div>
+</section>
+
+<!-- 대화 리포트 -->
+<section class="screen" id="report">
+  <div class="top"><button class="link" onclick="go('home')">‹ 홈</button></div>
+  <h2>대화 리포트</h2>
+  <div id="reportBody"></div>
+</section>
+
+<!-- 영어 일기 -->
+<section class="screen" id="diary">
+  <div class="top"><button class="link" onclick="go('home')">‹ 홈</button></div>
+  <h2>오늘 하루를 영어로 말해 보세요</h2>
+  <p class="mute">1분 정도 편하게 말하고, 다 말했으면 마이크를 한 번 더 누르세요. 틀려도 괜찮아요.</p>
+  <p class="mute">막히면: <span class="en">Today I… / After work, I… / I felt… because…</span></p>
+  <div class="micwrap"><button class="mic" id="diaryMic" aria-label="일기 말하기" onclick="listenLong(this)">🎤</button><p class="mute" id="diaryState">눌러서 시작</p></div>
+  <textarea id="diaryText" placeholder="말한 내용이 여기에 적혀요. 글자로 써도 돼요."></textarea>
+  <button class="btn wide" onclick="checkDiary()">일기로 다듬기</button>
+  <div id="diaryResult"></div>
+</section>
+
+<!-- 함께 상황극 -->
+<section class="screen" id="couple">
+  <div class="top"><button class="link" onclick="go('home')">‹ 홈</button></div>
+  <h2>누가 함께 할까요?</h2>
+  <div class="picks" id="couplePeople"></div>
+  <h2>어떤 상황을 연기해 볼까요?</h2>
+  <div class="chips" id="coupleScenes"></div>
+  <div class="typed"><input id="coupleCustom" placeholder="예: 주말 여행지 정하기"><button class="btn" onclick="makeScript($('coupleCustom').value)">만들기</button></div>
+  <div id="scriptBody"></div>
+</section>
+
+<!-- 그림 단어장 -->
+<section class="screen" id="words">
+  <div class="top"><button class="link" onclick="go('home')">‹ 홈</button><span class="step" id="wordCount"></span></div>
+  <h2>그림 단어장</h2>
+  <label class="photo-btn">📷 사진 찍어서 단어 만들기
+    <input type="file" accept="image/*" capture="environment" hidden onchange="photoPick(this)"></label>
+  <p class="mute" style="margin-top:12px">주제를 골라 그림 단어 8개 받기</p>
+  <div class="chips" id="wordThemes"></div>
+  <div class="qbar"><button class="btn" onclick="startQuiz('pick')">👂 듣고 그림 고르기</button><button class="btn" onclick="startQuiz('say')">🗣 그림 보고 말하기</button></div>
+  <div class="wgrid" id="wordGrid"></div>
+</section>
+
+<!-- 단어 카드 크게 보기 -->
+<section class="screen" id="wordView">
+  <div class="top"><button class="link" onclick="go('words')">‹ 단어장</button></div>
+  <div id="wordViewBody"></div>
+</section>
+
+<!-- 단어 퀴즈 -->
+<section class="screen" id="quiz">
+  <div class="top"><button class="link" onclick="openWords()">‹ 그만하기</button><span class="step" id="quizStep"></span></div>
+  <div id="quizBody"></div>
+</section>
+
+<!-- 주간 학습지도 -->
+<section class="screen" id="weekly">
+  <div class="top"><button class="link" onclick="go('home')">‹ 홈</button><span class="step" id="weekLabel"></span></div>
+  <div id="weeklyBody"></div>
+</section>
+
+<!-- 설정 -->
+<section class="screen" id="settings">
+  <div class="top"><button class="link" onclick="go('home')">‹ 홈</button></div>
+  <h2>내 설정</h2>
+  <label for="setLevel">레벨</label>
+  <select id="setLevel"><option>어린이</option><option>입문</option><option>초급</option><option>중급</option></select>
+  <label for="setInterests">관심사</label>
+  <div class="field"><input id="setInterests" placeholder="예: 러닝, 여행, 카페"></div>
+  <label for="setRate">AI 말하기 속도 <span id="rateVal"></span></label>
+  <input id="setRate" type="range" min="0.6" max="1.1" step="0.05" style="width:100%" oninput="document.getElementById('rateVal').textContent=this.value">
+  <button class="btn wide" onclick="saveSettings()">저장하기</button>
+  <button class="btn wide soft" onclick="$('cUrl').value=CONF.url;go('connect')">연결 주소·비밀번호 바꾸기</button>
+</section>
+
+</main>
+
+<!-- 프리톡 하단 입력 -->
+<div class="dock" id="dock" hidden>
+  <div class="in">
+    <label class="toggle"><input type="checkbox" id="autoMic" onchange="S.auto=this.checked"> 전화 모드: AI가 말을 마치면 자동으로 듣기</label>
+    <div class="hints" id="hints"></div>
+    <div class="bar">
+      <button class="btn soft" onclick="toggleHints()">힌트</button>
+      <button class="btn soft" id="koBtn" onclick="toggleKo()">번역</button>
+      <input id="talkInput" placeholder="글자로 입력해도 돼요" onkeydown="if(event.key==='Enter')sendTalk(this.value)">
+      <button class="mic" id="talkMic" aria-label="말하기" onclick="listen(this, t=>sendTalk(t))">🎤</button>
+    </div>
+  </div>
+</div>
+
+<div class="loading" id="loading"><div id="loadingText">생각하는 중…</div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const S = { user:null, lesson:null, li:0, stage:'learn', talk:{scene:'',history:[]}, applyRound:0, lessonCount:0 };
+const SCENES = [
+  ['카페에서 주문하기','You are a barista at a busy coffee shop. Take the customer\'s order.'],
+  ['호텔 체크인','You are a hotel front desk clerk. The guest is checking in.'],
+  ['길 묻기','You are a friendly local on the street. The learner is a tourist asking for directions.'],
+  ['식당 예약 전화','You are a restaurant staff member answering a phone call for reservations.'],
+  ['학부모 상담','You are a parent visiting school to talk with your child\'s teacher (the learner).'],
+  ['이웃과 스몰토크','You are a friendly neighbor chatting in the elevator about the weekend.'],
+  ['병원 접수','You are a receptionist at a clinic. The learner is a patient who feels sick.'],
+  ['러닝 크루 대화','You are a member of a running club chatting after a morning run.']
+];
+
+const SCENES_KID = [
+  ['아이스크림 가게','You are a friendly ice cream shop worker. A young child is choosing ice cream. Use very easy words.'],
+  ['동물원 친구','You are a friendly zookeeper showing animals to a young child. Ask easy questions about animals and colors.'],
+  ['새 친구 사귀기','You are a new friendly classmate (age 7) meeting the child at school. Ask name, age, favorite things.'],
+  ['생일 파티','You are a friend at the child\'s birthday party. Talk about cake, presents and games.'],
+  ['그림 이야기','You are an art teacher. Ask the child what they are drawing, colors and shapes.'],
+  ['방탈출 탐험대','You are a fun detective partner in a home escape room game. Give simple clues and ask easy questions.']
+];
+const isKid=()=>S.user&&S.user.level==='어린이';
+/* ---------- 공통 ---------- */
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function $(id){return document.getElementById(id)}
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id));
+  $('dock').hidden = id!=='talk'; window.scrollTo(0,0); if(id==='home'&&S.user) loadHome();}
+function toast(t){const el=$('toast');el.textContent=t;el.classList.add('on');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('on'),3200)}
+/* GAS API 호출: text/plain으로 보내야 브라우저가 사전 요청 없이 바로 보내요 */
+const CONF={url:'',pin:''};
+try{CONF.url=localStorage.getItem('eng_url')||'';CONF.pin=localStorage.getItem('eng_pin')||''}catch(e){}
+function call(fn,...args){
+  const quiet=['logShadow','getWeekly','markPlanDone','wordResult'].indexOf(fn)>=0;
+  if(!quiet)$('loading').classList.add('on');
+  const done=()=>$('loading').classList.remove('on');
+  return fetch(CONF.url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({fn,args,pin:CONF.pin})})
+    .then(r=>r.json())
+    .then(j=>{done();
+      if(j.auth===false){toast(j.error);go('connect');throw new Error(j.error)}
+      if(!j.ok){throw new Error(j.error||'문제가 생겼어요.')}
+      return j.data;})
+    .catch(e=>{done();if(!quiet)toast(e.message==='Failed to fetch'?'인터넷 연결이나 GAS 주소를 확인해 주세요.':(e.message||'문제가 생겼어요. 다시 시도해 주세요.'));throw e});
+}
+function saveConnect(){
+  const u=$('cUrl').value.trim(), p=$('cPin').value.trim();
+  if(!/^https:\/\/script\.google\.com\/.+\/exec$/.test(u)) return toast('주소는 https://script.google.com/로 시작하고 /exec로 끝나야 해요.');
+  if(!p) return toast('가족 비밀번호를 넣어 주세요.');
+  CONF.url=u;CONF.pin=p;
+  try{localStorage.setItem('eng_url',u);localStorage.setItem('eng_pin',p)}catch(e){}
+  go('pick');loadUsers();
+}
+
+/* ---------- 음성 ---------- */
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+let voice=null;
+function pickVoice(){const vs=speechSynthesis.getVoices();voice=vs.find(v=>/en-US/.test(v.lang)&&/Samantha|Google US|Female|Aria|Jenny/i.test(v.name))||vs.find(v=>/en-US/.test(v.lang))||null}
+if('speechSynthesis' in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
+function speak(t,onEnd){
+  if(!('speechSynthesis' in window)){toast('이 브라우저는 소리 읽기를 지원하지 않아요.');if(onEnd)onEnd();return}
+  speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(t); u.lang='en-US';
+  u.rate=(S.user&&S.user.rate)||0.9; if(voice)u.voice=voice;
+  if(onEnd){u.onend=onEnd;u.onerror=onEnd}
+  speechSynthesis.speak(u);
+}
+let rec=null;
+function listen(btn,onText){
+  if(!SR) return toast('이 브라우저는 음성 인식을 지원하지 않아요. 크롬에서 열거나 글자로 입력해 주세요.');
+  if(rec){rec.stop();return}
+  speechSynthesis.cancel();
+  rec=new SR(); rec.lang='en-US'; rec.interimResults=false; rec.maxAlternatives=1;
+  btn.classList.add('rec');
+  rec.onresult=e=>{const t=e.results[0][0].transcript; if(t) onText(t)};
+  rec.onerror=e=>toast(e.error==='not-allowed'?'마이크 권한을 허용해 주세요.':'잘 안 들렸어요. 마이크를 다시 눌러 말해 주세요.');
+  rec.onend=()=>{btn.classList.remove('rec');rec=null};
+  rec.start();
+}
+let longRec=null,longText='';
+function listenLong(btn){
+  if(!SR) return toast('이 브라우저는 음성 인식을 지원하지 않아요. 글자로 써 주세요.');
+  if(longRec){longRec.stop();return}
+  speechSynthesis.cancel(); longText=$('diaryText').value?$('diaryText').value.trim()+' ':'';
+  longRec=new SR(); longRec.lang='en-US'; longRec.continuous=true; longRec.interimResults=true;
+  btn.classList.add('rec'); $('diaryState').textContent='듣는 중… 다 말했으면 다시 누르세요';
+  longRec.onresult=e=>{let fin='',tmp='';for(let i=e.resultIndex;i<e.results.length;i++){const r=e.results[i];if(r.isFinal)fin+=r[0].transcript+' ';else tmp+=r[0].transcript}
+    longText+=fin; $('diaryText').value=(longText+tmp).trim()};
+  longRec.onerror=e=>{if(e.error==='not-allowed')toast('마이크 권한을 허용해 주세요.')};
+  longRec.onend=()=>{btn.classList.remove('rec');longRec=null;$('diaryState').textContent='눌러서 이어 말하기'};
+  longRec.start();
+}
+function js(v){return esc(JSON.stringify(v))}
+function sayBtn(t){return `<button class="say" aria-label="듣기" onclick="speak(${js(t)})">🔊</button>`}
+
+/* ---------- 사용자 ---------- */
+function loadUsers(){
+  call('getUsers').then(us=>{
+    $('whoList').innerHTML = us.map(u=>`<button onclick="pickUser(${js(u.name)})">${esc(u.name)}<span>${u.streak?u.streak+'일째 연속 학습 중':'오늘 첫 대화를 시작해 보세요'} · 레벨 ${esc(u.level)}</span></button>`).join('');
+  });
+}
+function pickUser(n){ S.user={name:n}; go('home'); }
+function loadHome(){
+  call('getHome',S.user.name).then(h=>{
+    S.user=h.user; document.body.classList.toggle('kid',isKid());
+    $('hello').textContent=h.user.name+'님, 안녕하세요';
+    $('streak').textContent=h.user.streak;
+    $('todayLine').textContent = h.todayCount ? `오늘 ${h.todayCount}문장을 말했어요. 누적 ${h.user.total}문장` : `오늘은 아직 말한 문장이 없어요. 누적 ${h.user.total}문장`;
+    const vals=Object.values(h.week), max=Math.max(5,...vals);
+    $('week').innerHTML=vals.map(v=>`<div class="${v?'has':''}" style="height:${Math.max(8,v/max*100)}%" title="${v}문장"></div>`).join('');
+    $('mistakeBadge').textContent=h.due;
+    loadWeekly();
+    $('partner').innerHTML=h.partners.map(p=>`<span>${esc(p.name)} ${p.streak}일째 · 오늘 ${p.today}문장</span>`).join('');
+  });
+}
+
+/* ---------- 레슨 ---------- */
+function openLesson(){
+  go('lesson'); $('lessonStep').textContent='';
+  $('lessonBody').innerHTML=`
+    <h2>오늘 배울 표현을 정할까요?</h2>
+    <p class="mute">비워 두면 관심사와 최근에 틀린 표현을 보고 AI가 골라 줘요.</p>
+    <div class="typed"><input id="lessonTopic" placeholder="예: 부탁하기, 경험 말하기, 수업 안내"></div>
+    <button class="btn wide" onclick="makeLesson()">레슨 만들기</button>`;
+}
+function makeLesson(){
+  $('loadingText').textContent='레슨을 만드는 중…';
+  call('makeLesson',S.user.name,$('lessonTopic').value.trim()).then(l=>{
+    $('loadingText').textContent='생각하는 중…';
+    S.lesson=l; S.li=0; S.applyRound=0; S.lessonCount=0; showLearn();
+  });
+}
+function showLearn(){
+  const l=S.lesson; $('lessonStep').textContent='1단계 배우기';
+  $('lessonBody').innerHTML=`
+    <h2>${esc(l.title)}</h2>
+    <div class="card"><div class="pattern en">${esc(l.pattern)}</div><p>${esc(l.explainKo)}</p></div>
+    <div class="card">${l.examples.map(e=>`<div class="ex">${sayBtn(e.en)}<div><div class="en">${esc(e.en)}</div><div class="mute">${esc(e.ko)}</div></div></div>`).join('')}</div>
+    <button class="btn wide" onclick="S.si=0;S.shadowN=0;showShadow()">따라 말하기 시작</button>`;
+}
+/* 쉐도잉: 듣고 그대로 따라 말하면 단어별로 맞은 곳을 표시 */
+function showShadow(){
+  const e=S.lesson.examples[S.si];
+  $('lessonStep').textContent=`2단계 따라 말하기 ${S.si+1}/${S.lesson.examples.length}`;
+  $('lessonBody').innerHTML=`
+    <div class="card"><div class="ex" style="border:0">${sayBtn(e.en)}<div><div class="en words" id="shWords">${esc(e.en)}</div><div class="mute">${esc(e.ko)}</div></div></div></div>
+    <div class="micwrap"><button class="mic" aria-label="따라 말하기" onclick="listen(this,checkShadow)">🎤</button><p class="mute">듣고 똑같이 말해 보세요</p></div>
+    <div id="fb"></div>
+    <div class="row" style="margin-top:12px"><button class="btn soft" onclick="nextShadow()">${S.si<S.lesson.examples.length-1?'다음 문장':'연습으로 넘어가기'}</button></div>`;
+  speak(e.en);
+}
+function wordMatch(target,said){
+  const T=norm(target).split(' '), H=norm(said).split(' ');
+  const n=T.length,m=H.length,L=Array.from({length:n+1},()=>Array(m+1).fill(0));
+  for(let i=n-1;i>=0;i--)for(let j=m-1;j>=0;j--)L[i][j]=T[i]===H[j]?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
+  const hit=Array(n).fill(false);let i=0,j=0;
+  while(i<n&&j<m){if(T[i]===H[j]){hit[i]=true;i++;j++}else if(L[i+1][j]>=L[i][j+1])i++;else j++}
+  return hit;
+}
+function checkShadow(said){
+  const e=S.lesson.examples[S.si], words=e.en.split(/\s+/), hit=wordMatch(e.en,said);
+  const pct=Math.round(hit.filter(Boolean).length/Math.max(1,hit.length)*100);
+  $('shWords').innerHTML=words.map((w,i)=>`<span class="${hit[i]?'hit':'miss'}">${esc(w)}</span>`).join(' ');
+  $('fb').innerHTML=`<div class="fb ${pct>=(isKid()?60:80)?'ok':'no'}"><div class="head">${pct>=(isKid()?60:80)?(isKid()?'우와, 잘했어요! ⭐':'잘 들렸어요'):(isKid()?'빨간 단어만 한 번 더 해 볼까?':'빨간 단어가 다르게 들렸어요')} ${pct}%</div>
+    <div class="meter"><i style="width:${pct}%"></i></div><div class="said">들린 문장: ${esc(said)}</div>
+    <p class="mute">빨간 단어를 천천히 또박또박 다시 말해 보세요.</p></div>`;
+  S.shadowN++;
+}
+function nextShadow(){
+  if(S.si<S.lesson.examples.length-1){S.si++;showShadow();return}
+  call('logShadow',S.user.name,S.shadowN).catch(()=>{}); S.lessonCount+=S.shadowN; showPractice();
+}
+function micBlock(handler){
+  return `<div class="micwrap"><button class="mic" aria-label="말하기" onclick="listen(this,${handler})">🎤</button><p class="mute">눌러서 영어로 말하기</p></div>
+  <div class="typed"><input id="typedAns" placeholder="글자로 입력해도 돼요" onkeydown="if(event.key==='Enter')${handler}(this.value)"><button class="btn soft" onclick="${handler}($('typedAns').value)">확인</button></div>
+  <div id="fb"></div>`;
+}
+function showPractice(){
+  const p=S.lesson.practice[S.li];
+  $('lessonStep').textContent=`3단계 연습 ${S.li+1}/${S.lesson.practice.length}`;
+  $('lessonBody').innerHTML=`
+    <div class="card"><div class="mute">영어로 말해 보세요</div><div class="prompt-ko">${esc(p.ko)}</div>
+      <p class="mute">패턴: <span class="en">${esc(S.lesson.pattern)}</span></p></div>${micBlock('checkPractice')}`;
+}
+function fbHtml(r,said,extra){
+  return `<div class="fb ${r.ok?'ok':'no'}">
+    <div class="head">${r.ok?(isKid()?'우와, 잘했어요! ⭐':'좋아요!'):(isKid()?'이렇게 말해 볼까?':'이렇게 고쳐 볼까요?')}</div>
+    <div class="said">내가 한 말: ${esc(said)}</div>
+    ${r.ok?'':`<div class="ex">${sayBtn(r.corrected)}<div class="en">${esc(r.corrected)}</div></div>`}
+    ${r.natural?`<div class="ex">${sayBtn(r.natural)}<div><div class="mute">더 자연스럽게</div><div class="en">${esc(r.natural)}</div></div></div>`:''}
+    <p>${esc(r.explainKo)}</p></div>${extra||''}`;
+}
+function checkPractice(said){
+  said=(said||'').trim(); if(!said) return;
+  const p=S.lesson.practice[S.li];
+  call('checkSentence',S.user.name,'practice',p.ko,p.answer,said).then(r=>{
+    S.lessonCount++;
+    const last=S.li>=S.lesson.practice.length-1;
+    $('fb').innerHTML=fbHtml(r,said,`<div class="row" style="margin-top:12px">
+      <button class="btn soft" onclick="showPractice()">다시 말하기</button>
+      <button class="btn" onclick="${last?'showApply()':'S.li++;showPractice()'}">${last?'내 이야기로 말하기':'다음 문장'}</button></div>`);
+  });
+}
+function showApply(){
+  const l=S.lesson; $('lessonStep').textContent='4단계 내 이야기로 말하기';
+  const q=S.applyRound===0?l.applyQuestion:S.follow;
+  $('lessonBody').innerHTML=`
+    <div class="card"><div class="ex">${sayBtn(q)}<div><div class="en prompt-ko">${esc(q)}</div>
+      ${S.applyRound===0?`<div class="mute">${esc(l.applyQuestionKo)}</div>`:''}</div></div>
+      <p class="mute">배운 패턴 <span class="en">${esc(l.pattern)}</span>을 써서 대답해 보세요.</p></div>${micBlock('checkApply')}`;
+  speak(q);
+}
+function checkApply(said){
+  said=(said||'').trim(); if(!said) return;
+  const q=S.applyRound===0?S.lesson.applyQuestion:S.follow;
+  call('checkSentence',S.user.name,'apply',q,'',said).then(r=>{
+    S.lessonCount++;
+    const more=S.applyRound<1&&r.followUp;
+    if(more) S.follow=r.followUp;
+    $('fb').innerHTML=fbHtml(r,said,`<div class="row" style="margin-top:12px">
+      ${more?`<button class="btn" onclick="S.applyRound++;showApply()">한 번 더 대답하기</button>`:''}
+      <button class="btn ${more?'soft':''}" onclick="finishLesson()">레슨 마치기</button></div>`);
+  });
+}
+function finishLesson(){
+  $('lessonStep').textContent='';
+  $('lessonBody').innerHTML=`<div class="board"><div class="streak">${S.lessonCount}</div><p>문장을 영어로 말했어요.</p>
+    <p class="mute">오늘 배운 표현: <span class="en">${esc(S.lesson.pattern)}</span></p></div>
+    <button class="btn wide" onclick="renderScenes();go('talkSetup')">배운 표현으로 프리톡 하기</button>
+    <button class="btn wide soft" onclick="go('home')">홈으로</button>`;
+}
+
+/* ---------- 프리톡 ---------- */
+function renderScenes(){ $('scenarios').innerHTML=(isKid()?SCENES_KID:SCENES).map(s=>`<button onclick="startTalk(${js(s[1])},${js(s[0])})">${esc(s[0])}</button>`).join(''); }
+function startTalk(scene,title){
+  scene=(scene||'').trim(); if(!scene) return toast('상황을 골라 주세요.');
+  S.talk={scene,history:[],hints:[]};
+  $('talkTitle').textContent=title||'직접 만든 상황'; $('chat').innerHTML=''; $('hints').classList.remove('on');
+  go('talk');
+  call('chatTurn',S.user.name,scene,[],'').then(addAi);
+}
+function addAi(r){
+  S.talk.history.push({role:'ai',text:r.reply}); S.talk.hints=r.hints||[];
+  const d=document.createElement('div'); d.className='bub ai';
+  d.innerHTML=`<div class="ex" style="padding:0;border:0">${sayBtn(r.reply)}<div><div class="en">${esc(r.reply)}</div><div class="ko">${esc(r.replyKo)}</div></div></div>`;
+  $('chat').appendChild(d); renderHints(); d.scrollIntoView({behavior:'smooth',block:'end'});
+  speak(r.reply,()=>{ if(S.auto&&$('talk').classList.contains('on')&&!rec) listen($('talkMic'),t=>sendTalk(t)); });
+}
+function sendTalk(t){
+  t=(t||'').trim(); if(!t) return; $('talkInput').value=''; $('hints').classList.remove('on');
+  const me=document.createElement('div'); me.className='bub me en'; me.textContent=t; $('chat').appendChild(me);
+  call('chatTurn',S.user.name,S.talk.scene,S.talk.history,t).then(r=>{
+    S.talk.history.push({role:'me',text:t});
+    if(r.hasError&&r.corrected){const f=document.createElement('div');f.className='fix';
+      f.innerHTML=`<span class="en">${esc(r.corrected)}</span><br>${esc(r.explainKo)}`;$('chat').appendChild(f);}
+    addAi(r);
+  });
+}
+function renderHints(){$('hints').innerHTML='<div class="mute">이렇게 말해 볼 수 있어요</div>'+S.talk.hints.map(h=>`<button class="en" onclick="speak(${js(h)})">${esc(h)}</button>`).join('')}
+function toggleHints(){$('hints').classList.toggle('on')}
+function toggleKo(){$('chat').classList.toggle('showko')}
+function endTalk(){
+  speechSynthesis.cancel(); if(rec) rec.stop();
+  const n=S.talk.history.filter(h=>h.role==='me').length;
+  if(!n){go('home');return}
+  $('loadingText').textContent='대화를 정리하는 중…';
+  call('talkReport',S.user.name,S.talk.scene,S.talk.history).then(r=>{
+    $('loadingText').textContent='생각하는 중…';
+    go('report');
+    $('reportBody').innerHTML=`
+      <div class="board"><div class="streak">${n}</div><p>문장을 말했어요.</p><p class="mute">${esc(r.goodKo)}</p></div>
+      ${(r.fixes||[]).length?`<div class="card"><div class="head" style="font-weight:700">이렇게 말하면 더 좋아요</div>${r.fixes.map(f=>`
+        <div class="ex">${sayBtn(f.better)}<div><div class="said"><s>${esc(f.said)}</s></div><div class="en">${esc(f.better)}</div><div class="mute">${esc(f.whyKo)}</div></div></div>`).join('')}</div>`:''}
+      <div class="card"><div style="font-weight:700">이 상황에서 쓸 만한 표현</div>${(r.expressions||[]).map(e=>`
+        <div class="ex">${sayBtn(e.en)}<div><div class="en">${esc(e.en)}</div><div class="mute">${esc(e.ko)}</div></div></div>`).join('')}</div>
+      <div class="card"><b>다음엔</b> ${esc(r.nextTipKo)}</div>
+      <button class="btn wide" onclick="startTalk(S.talk.scene,$('talkTitle').textContent)">같은 상황 다시 하기</button>
+      <button class="btn wide soft" onclick="go('home')">홈으로</button>`;
+  }).catch(()=>go('home'));
+}
+
+/* ---------- 튜터 ---------- */
+function ask(){
+  const q=$('tutorQ').value.trim(); if(!q) return;
+  call('askTutor',S.user.name,q).then(a=>{const el=$('tutorA');el.hidden=false;el.textContent=a});
+}
+
+/* ---------- 복습 ---------- */
+function openReview(){
+  go('review');
+  call('getDue',S.user.name).then(ms=>{
+    S.mistakes=ms;
+    $('reviewList').innerHTML = ms.length ? ms.map((m,i)=>`<div class="card" id="rv${i}">
+      <div class="said"><s>${esc(m.said)}</s></div>
+      <div class="ex" style="border:0">${sayBtn(m.corrected)}<div class="en" style="font-size:19px">${esc(m.corrected)}</div></div>
+      <p class="mute">${esc(m.explain)}</p>
+      <div class="row"><button class="btn soft" onclick="listen(this,t=>checkReview(${i},t))">🎤 따라 말하기</button>
+      <button class="btn soft" onclick="failReview(${i})">아직 어려워요</button></div></div>`).join('')
+      : '<div class="empty">오늘 복습할 표현이 없어요. 레슨, 프리톡, 일기에서 고친 문장이 날짜에 맞춰 여기에 나와요.</div>';
+  });
+}
+function failReview(i){const m=S.mistakes[i];
+  call('reviewResult',S.user.name,m.row,false).then(msg=>{$('rv'+i).innerHTML='<div class="fb no"><div class="head">'+esc(msg)+'</div><div class="en">'+esc(m.corrected)+'</div></div>'})}
+function norm(s){return String(s).toLowerCase().replace(/[^a-z0-9' ]/g,'').replace(/\s+/g,' ').trim()}
+function checkReview(i,said){
+  const m=S.mistakes[i];
+  const hit=wordMatch(m.corrected,said), pct=hit.filter(Boolean).length/Math.max(1,hit.length);
+  if(pct>=(isKid()?0.6:0.85)){
+    call('reviewResult',S.user.name,m.row,true).then(msg=>{$('rv'+i).innerHTML='<div class="fb ok"><div class="head">맞혔어요! '+esc(msg)+'</div><div class="en">'+esc(m.corrected)+'</div></div>'});
+  } else toast('들린 문장: "'+said+'" 한 번 더 들어 보고 말해 보세요.');
+}
+
+/* ---------- 영어 일기 ---------- */
+function openDiary(){go('diary');$('diaryText').value='';$('diaryResult').innerHTML=''}
+function checkDiary(){
+  const t=$('diaryText').value.trim(); if(t.split(/\s+/).length<5) return toast('조금만 더 말해 주세요. 두세 문장이면 충분해요.');
+  if(longRec) longRec.stop();
+  $('loadingText').textContent='일기를 다듬는 중…';
+  call('diaryCheck',S.user.name,t).then(r=>{
+    $('loadingText').textContent='생각하는 중…';
+    $('diaryResult').innerHTML=`
+      <div class="card"><div class="ex" style="border:0">${sayBtn(r.diary)}<div><div class="en" style="font-size:18px">${esc(r.diary)}</div>
+        <p class="mute">${esc(r.diaryKo)}</p></div></div></div>
+      ${(r.fixes||[]).length?`<div class="card">${r.fixes.map(f=>`<div class="ex">${sayBtn(f.corrected)}<div><div class="said"><s>${esc(f.said)}</s></div>
+        <div class="en">${esc(f.corrected)}</div><div class="mute">${esc(f.explainKo)}</div></div></div>`).join('')}<p class="mute">고친 표현은 복습 목록에 담았어요.</p></div>`:''}
+      <div class="fb ok">${esc(r.praiseKo)}</div>`;
+  });
+}
+
+/* ---------- 함께 상황극 ---------- */
+const COUPLE_SCENES=['주말 나들이 정하기','저녁 메뉴 고르기','집에서 방탈출 게임 하기','마트에서 장보기','동물원 구경하기','아침 등교·출근 준비 대소동','생일 파티 준비하기'];
+function openCouple(){go('couple');$('scriptBody').innerHTML='';
+  call('getUsers').then(us=>{$('couplePeople').innerHTML=us.map(u=>`<label><input type="checkbox" value="${esc(u.name)}" checked> ${esc(u.name)}</label>`).join('')});
+  $('coupleScenes').innerHTML=COUPLE_SCENES.map(c=>`<button onclick="makeScript(${js(c)})">${esc(c)}</button>`).join('')}
+function makeScript(scene){
+  scene=(scene||'').trim(); if(!scene) return toast('상황을 골라 주세요.');
+  $('loadingText').textContent='대본을 쓰는 중…';
+  const who=[...document.querySelectorAll('#couplePeople input:checked')].map(i=>i.value);
+  if(who.length<2) return toast('두 명 이상 골라 주세요.');
+  call('coupleScript',S.user.name,scene,who).then(r=>{
+    $('loadingText').textContent='생각하는 중…'; S.script=r;
+    $('scriptBody').innerHTML=`
+      <div class="card"><h2>${esc(r.title)}</h2>
+        <div class="row" style="margin-bottom:8px">
+          <button class="btn" onclick="playScript()">전체 듣기</button>
+          <button class="btn soft" onclick="$('scriptLines').classList.toggle('showko')">번역</button></div>
+        <p class="mute">한 번 같이 듣고, 각자 이름이 적힌 줄을 소리 내어 읽어 보세요. 다은이 줄은 짧고 쉽게 만들었어요.</p>
+        <div id="scriptLines">${r.lines.map((l,i)=>`<div class="line" id="ln${i}"><span class="who-tag who-${l.who}">${esc(r.names[l.who]||l.who)}</span>
+          <div style="flex:1"><div class="en">${esc(l.en)}</div><div class="ko mute" style="display:none">${esc(l.ko)}</div></div>${sayBtn(l.en)}</div>`).join('')}</div></div>
+      <div class="card"><div style="font-weight:700">오늘의 핵심 표현</div>${(r.keyExpressions||[]).map(e=>`
+        <div class="ex">${sayBtn(e.en)}<div><div class="en">${esc(e.en)}</div><div class="mute">${esc(e.ko)}</div></div></div>`).join('')}</div>`;
+  });
+}
+function playScript(i){
+  i=i||0; document.querySelectorAll('.line').forEach(e=>e.classList.remove('playing'));
+  if(!S.script||i>=S.script.lines.length) return;
+  const el=$('ln'+i); el.classList.add('playing'); el.scrollIntoView({behavior:'smooth',block:'center'});
+  speak(S.script.lines[i].en,()=>setTimeout(()=>playScript(i+1),350));
+}
+
+/* ---------- 그림 단어장 ---------- */
+const THEMES_ADULT=['우리 집','부엌','학교','운동·러닝','여행','감정','날씨','몸'];
+const THEMES_KID=['동물','과일','색깔','장난감','우리 몸','학교 물건','날씨','바다 친구들'];
+function picHtml(w,big){return w.photo?`<img src="data:image/jpeg;base64,${w.photo}" alt="${esc(w.en)}">`:esc(w.emoji||'❓')}
+function openWords(){
+  go('words');
+  $('wordThemes').innerHTML=(isKid()?THEMES_KID:THEMES_ADULT).map(t=>`<button onclick="wordSet(${js(t)})">${esc(t)}</button>`).join('');
+  call('getWords',S.user.name).then(renderWords);
+}
+function renderWords(ws){
+  S.words=ws; const due=ws.filter(w=>w.due).length;
+  $('wordCount').textContent=`${ws.length}개 · 오늘 복습 ${due}개`;
+  $('wordGrid').innerHTML=ws.length?ws.map((w,i)=>`<button class="wcard ${w.mastered?'done':''}" onclick="viewWord(${i})"><div class="pic">${picHtml(w)}</div><div class="w">${esc(w.en)}</div></button>`).join('')
+    :'<div class="empty" style="grid-column:1/-1">아직 단어가 없어요. 주제를 고르거나 사진을 찍어 보세요.</div>';
+}
+function wordSet(theme){
+  $('loadingText').textContent='그림 단어를 고르는 중…';
+  call('makeWordSet',S.user.name,theme).then(ws=>{$('loadingText').textContent='생각하는 중…';renderWords(ws);toast(`'${theme}' 단어를 담았어요. 눌러서 들어 보세요.`)});
+}
+function viewWord(i){
+  const w=S.words[i]; go('wordView');
+  $('wordViewBody').innerHTML=`<div class="card" style="text-align:center">
+    <div class="bigpic">${picHtml(w)}</div>
+    <div class="bigword">${esc(w.en)}</div><p class="mute">${esc(w.ko)}</p>
+    <div class="row" style="justify-content:center"><button class="btn" onclick="speak(${js(w.en)})">🔊 단어 듣기</button>
+      <button class="btn soft" onclick="listen(this,t=>sayCheck(${i},t,false))">🎤 따라 말하기</button></div>
+    ${w.example?`<div class="ex" style="text-align:left;margin-top:14px">${sayBtn(w.example)}<div><div class="en">${esc(w.example)}</div><div class="mute">${esc(w.exampleKo)}</div></div></div>`:''}
+    <div id="fb"></div></div>
+    <div class="row" style="margin-top:12px">${i>0?`<button class="btn soft" onclick="viewWord(${i-1})">‹ 이전</button>`:''}${i<S.words.length-1?`<button class="btn soft" style="margin-left:auto" onclick="viewWord(${i+1})">다음 ›</button>`:''}</div>`;
+  speak(w.en);
+}
+function wordHeard(target,said){const t=norm(target);return norm(said).split(' ').some(x=>x===t)||norm(said)===t||norm(said).includes(t)}
+function sayCheck(i,said,quiz){
+  const w=S.words[i], ok=wordHeard(w.en,said);
+  document.querySelector('.screen.on #fb').innerHTML=`<div class="fb ${ok?'ok':'no'}"><div class="head">${ok?(isKid()?'우와, 정확해요! ⭐':'정확해요!'):'한 번 더 들어 볼까요?'}</div><div class="said">들린 말: ${esc(said)}</div></div>`;
+  if(ok) speak(w.en);
+  return ok;
+}
+
+/* 사진 → 작게 줄여서 AI에 보내기 */
+function shrink(img,max,q){const c=document.createElement('canvas');const r=Math.min(1,max/Math.max(img.width,img.height));
+  c.width=Math.round(img.width*r);c.height=Math.round(img.height*r);c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+  return c.toDataURL('image/jpeg',q).split(',')[1]}
+function photoPick(input){
+  const f=input.files&&input.files[0]; input.value=''; if(!f) return;
+  const url=URL.createObjectURL(f), img=new Image();
+  img.onload=()=>{
+    const big=shrink(img,768,0.8), thumb=shrink(img,200,0.6); URL.revokeObjectURL(url);
+    $('loadingText').textContent='사진 속 물건을 알아보는 중…';
+    call('photoWord',S.user.name,big,thumb).then(ws=>{$('loadingText').textContent='생각하는 중…';renderWords(ws);viewWord(0)})
+      .catch(()=>{$('loadingText').textContent='생각하는 중…'});
+  };
+  img.onerror=()=>toast('사진을 읽지 못했어요. 다른 사진으로 해 볼까요?');
+  img.src=url;
+}
+
+/* 퀴즈: 오늘 복습할 단어 먼저, 모자라면 아직 못 익힌 단어로 최대 8문제 */
+function startQuiz(mode){
+  const ws=S.words||[]; if(ws.length<4) return toast('단어가 4개 이상 있어야 퀴즈를 할 수 있어요.');
+  const due=ws.map((w,i)=>({w,i})).filter(x=>x.w.due), rest=ws.map((w,i)=>({w,i})).filter(x=>!x.w.due&&!x.w.mastered);
+  const pool=[...shuffle(due),...shuffle(rest)].slice(0,8);
+  if(!pool.length) return toast('오늘은 다 외웠어요! 새 단어를 더 받아 볼까요?');
+  S.quiz={mode,pool,k:0,right:0}; go('quiz'); showQuiz();
+}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function showQuiz(){
+  const q=S.quiz; if(q.k>=q.pool.length) return endQuiz();
+  const {w,i}=q.pool[q.k]; $('quizStep').textContent=`${q.k+1} / ${q.pool.length}`;
+  if(q.mode==='pick'){
+    const others=shuffle(S.words.map((x,j)=>j).filter(j=>j!==i&&S.words[j].en.toLowerCase()!==w.en.toLowerCase())).slice(0,3);
+    const opts=shuffle([i,...others]);
+    $('quizBody').innerHTML=`<div class="card" style="text-align:center"><p class="mute">잘 듣고 맞는 그림을 골라요</p>
+      <button class="mic" onclick="speak(${js(w.en)})" aria-label="다시 듣기">🔊</button></div>
+      <div class="choices">${opts.map(j=>`<button id="op${j}" onclick="pickAns(${j},${i})">${picHtml(S.words[j])}</button>`).join('')}</div>`;
+    setTimeout(()=>speak(w.en),300);
+  } else {
+    $('quizBody').innerHTML=`<div class="card" style="text-align:center"><p class="mute">이 그림은 영어로 뭘까요?</p>
+      <div class="bigpic">${picHtml(w)}</div>
+      <button class="btn soft" onclick="this.outerHTML='<p>${esc(w.ko).replace(/'/g,'&#39;')}</p>'">한글 힌트</button></div>
+      <div class="micwrap"><button class="mic" aria-label="말하기" onclick="listen(this,t=>sayAns(t))">🎤</button></div>
+      <div id="fb"></div>
+      <div class="row"><button class="btn soft" onclick="giveUp()">모르겠어요</button></div>`;
+  }
+}
+function pickAns(j,i){
+  const ok=j===i; document.querySelectorAll('.choices button').forEach(b=>b.disabled=true);
+  $('op'+i).classList.add('right'); if(!ok) $('op'+j).classList.add('wrong');
+  quizResult(ok);
+}
+function sayAns(said){const {i}=S.quiz.pool[S.quiz.k]; const ok=sayCheck(i,said,true); if(ok) quizResult(true);}
+function giveUp(){const {w}=S.quiz.pool[S.quiz.k];
+  document.querySelector('.screen.on #fb').innerHTML=`<div class="fb no"><div class="head">정답은 <span class="en">${esc(w.en)}</span></div><p class="mute">${esc(w.ko)}</p></div>`;
+  speak(w.en); quizResult(false);}
+function quizResult(ok){
+  const q=S.quiz, {w}=q.pool[q.k]; if(ok) q.right++;
+  call('wordResult',S.user.name,w.row,ok).catch(()=>{});
+  if(ok&&q.mode==='pick') speak(w.en);
+  setTimeout(()=>{q.k++;showQuiz()}, ok?1300:2600);
+}
+function endQuiz(){
+  const q=S.quiz; $('quizStep').textContent='';
+  $('quizBody').innerHTML=`<div class="board" style="text-align:center"><div class="streak">${q.right} / ${q.pool.length}</div>
+    <p>${q.right===q.pool.length?(isKid()?'다 맞혔어요! 최고예요 🏆':'모두 맞혔어요!'):'틀린 단어는 내일 다시 나와요.'}</p></div>
+    <button class="btn wide" onclick="startQuiz(S.quiz.mode)">한 번 더</button><button class="btn wide soft" onclick="openWords()">단어장으로</button>`;
+}
+
+/* ---------- 1주일 학습지도 ---------- */
+const DAYS=['월','화','수','목','금','토','일'];
+const TYPE_LABEL={lesson:'레슨',talk:'프리톡',words:'그림 단어',diary:'영어 일기',review:'복습',couple:'가족 상황극'};
+function loadWeekly(){
+  call('getWeekly',S.user.name).then(w=>{S.week=w;renderWeekCard()}).catch(()=>{});
+}
+function renderWeekCard(){
+  const w=S.week, el=$('weekCard');
+  if(!w.plan){el.innerHTML=`<div style="font-weight:700">이번 주 학습지도</div>
+    <p class="mute">지난 7일 기록과 자주 틀린 표현을 보고, 이번 주 7일 계획을 짜 드려요.</p>
+    <button class="btn wide" onclick="makeWeekly()">이번 주 계획 받기</button>`;return}
+  const d=w.plan.days[w.today]||w.plan.days[0], done=w.done.indexOf(w.today)>=0;
+  el.innerHTML=`<div class="row" style="justify-content:space-between"><span style="font-weight:700">이번 주 목표</span><button class="link" onclick="openWeekly()">주간 리포트 ›</button></div>
+    <p>${esc(w.plan.goalKo)}</p>
+    <div class="dots">${DAYS.map((x,i)=>`<i class="${w.done.indexOf(i)>=0?'on':''} ${i===w.today?'now':''}" title="${x}"></i>`).join('')}</div>
+    <div class="mute">오늘(${DAYS[w.today]}) 할 일 · ${TYPE_LABEL[d.type]||''} ${d.minutes||10}분</div>
+    <div class="today">${done?'✅ ':''}${esc(d.titleKo)}</div>
+    <button class="btn wide" style="margin-top:0" onclick="runTask(${w.today})">${done?'한 번 더 하기':'오늘 할 일 시작'}</button>`;
+}
+function makeWeekly(){
+  $('loadingText').textContent='지난주 기록을 보고 계획을 짜는 중…';
+  call('makeWeekly',S.user.name).then(w=>{$('loadingText').textContent='생각하는 중…';S.week=w;renderWeekCard();if($('weekly').classList.contains('on'))openWeekly()})
+    .catch(()=>{$('loadingText').textContent='생각하는 중…'});
+}
+function openWeekly(){
+  const w=S.week; go('weekly'); $('weekLabel').textContent=w.weekStart+' 주';
+  const p=w.plan, st=p.stats||{};
+  const acts=Object.entries(st.byType||{}).map(([k,v])=>`${esc(k)} ${v}`).join(' · ')||'기록 없음';
+  $('weeklyBody').innerHTML=`
+    <div class="board"><div class="mute">지난 7일</div><div><span class="streak">${st.studyDays||0}</span> 일 공부했어요</div>
+      <p class="mute">${acts}</p><p class="mute">단어 ${st.words||0}개 중 ${st.mastered||0}개 익힘</p></div>
+    <div class="card"><p style="font-weight:700">${esc(p.summaryKo)}</p><p>${esc(p.praiseKo)}</p></div>
+    ${(p.weakPoints||[]).length?`<div class="card"><div style="font-weight:700">이번 주에 고쳐 볼 것</div>${p.weakPoints.map(x=>`
+      <div class="ex"><div><div>${esc(x.pointKo)}</div><div class="en mute">${esc(x.example)}</div></div></div>`).join('')}</div>`:''}
+    <div class="card"><div style="font-weight:700">이번 주 목표</div><p>${esc(p.goalKo)}</p>
+      ${p.days.map((d,i)=>`<div class="day ${i===w.today?'now':''} ${w.done.indexOf(i)>=0?'done':''}">
+        <span class="d">${w.done.indexOf(i)>=0?'✓':DAYS[i]}</span>
+        <div class="t"><div>${esc(d.titleKo)}</div><div class="mute">${TYPE_LABEL[d.type]||''} · ${d.minutes||10}분</div></div>
+        <button class="btn soft" onclick="runTask(${i})">시작</button></div>`).join('')}</div>
+    ${p.parentNoteKo?`<div class="card"><b>부모님께</b><p>${esc(p.parentNoteKo)}</p></div>`:''}
+    <button class="btn wide soft" onclick="makeWeekly()">계획 다시 만들기</button>`;
+}
+function runTask(i){
+  const d=S.week.plan.days[i];
+  call('markPlanDone',S.user.name,i).then(done=>{if(done)S.week.done=done}).catch(()=>{});
+  if(d.type==='lesson'){openLesson();$('lessonTopic').value=d.topic||d.titleKo;makeLesson()}
+  else if(d.type==='talk'){startTalk(d.scenario||d.topic||d.titleKo,d.titleKo)}
+  else if(d.type==='words'){openWords();if(d.topic)wordSet(d.topic)}
+  else if(d.type==='diary'){openDiary()}
+  else if(d.type==='couple'){openCouple();$('coupleCustom').value=d.topic||d.titleKo;toast('함께 할 사람을 확인하고 만들기를 눌러 주세요.')}
+  else {openReview()}
+}
+
+/* ---------- 설정 ---------- */
+function openSettings(){go('settings');$('setLevel').value=S.user.level;$('setInterests').value=S.user.interests;
+  $('setRate').value=S.user.rate;$('rateVal').textContent=S.user.rate}
+function saveSettings(){
+  call('updateProfile',S.user.name,$('setLevel').value,$('setInterests').value,$('setRate').value)
+    .then(u=>{S.user=u;toast('설정을 저장했어요.');go('home')});
+}
+
+if(CONF.url&&CONF.pin){go('pick');loadUsers()}else{go('connect');$('cUrl').value=CONF.url}
+</script>
+</body>
+</html>
